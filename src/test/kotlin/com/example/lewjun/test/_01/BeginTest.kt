@@ -82,4 +82,41 @@ class BeginTest {
     fun testRangeIn() {
         b.rangeIn()
     }
+
+    @Test
+    fun testListOf() {
+        // 返回一个只读列表（包含重复）
+        val fruits = listOf("avocado", "orange", "apple", "apple", "banana", "kiwifruit")
+        for (fruit in fruits) {
+            println(fruit)
+        }
+
+        if ("orange" in fruits) {
+            println("orange in fruits")
+        }
+    }
+
+    @Test
+    fun testSetOf() {
+        // 返回一个只读列表（重复的数据只返回一次）
+        val fruits = setOf("avocado", "orange", "apple", "apple", "banana", "kiwifruit")
+        for (fruit in fruits) {
+            println(fruit)
+        }
+
+        if ("orange" in fruits) {
+            println("orange in fruits")
+        }
+
+        // when 如果匹配成功即返回，后面的即使能匹配也不再去匹配
+        when {
+            "orange" in fruits -> println("orange")
+            "pear" !in fruits -> println("pear is not in fruits")
+        }
+
+        fruits.filter { it.startsWith("a") }
+                .sortedBy { it }
+                .map { it.toUpperCase() }
+                .forEach { println(it) }
+    }
 }
