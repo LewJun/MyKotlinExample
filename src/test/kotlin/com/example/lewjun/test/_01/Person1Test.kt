@@ -169,18 +169,15 @@ class Person1Test {
     }
 
     // Return null if str does not hold a number
-    fun parseInt(str: String): Int? {
-        return str.toInt()
+    fun parseInt(str: String) = try {
+        str.toInt()
+    } catch (e: Exception) {
+        null
     }
 
     @Test
     fun testParseInt() {
-        val a: Int? = try {
-            parseInt("sss")
-        } catch (e: NumberFormatException) {
-            println(e.message)
-            null
-        }
+        val a = parseInt("555")
 //        println(a*a) error
         if (a != null) {
             println(a * a)
