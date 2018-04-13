@@ -5,9 +5,7 @@ import com.example.lewjun.test._01.oo.accessModifier.BaseModel
 import com.example.lewjun.test._01.oo.accessModifier.MyEntity1
 import org.junit.Before
 import org.junit.Test
-import java.math.BigDecimal
 import java.net.URL
-import java.text.DateFormat
 import java.text.DecimalFormat
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -173,6 +171,21 @@ class Person1Test {
     // Return null if str does not hold a number
     fun parseInt(str: String): Int? {
         return str.toInt()
+    }
+
+    @Test
+    fun testParseInt() {
+        val a: Int? = try {
+            parseInt("sss")
+        } catch (e: NumberFormatException) {
+            println(e.message)
+            null
+        }
+//        println(a*a) error
+        if (a != null) {
+            println(a * a)
+        }
+
     }
 
 }
